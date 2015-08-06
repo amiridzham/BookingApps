@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
 $.ajax({
-     url:"http://localhost/phpapi/Get_FromList.php",
+     url:"http://202.75.56.57/~amirid/BusAPI/Get_FromList.php",
      dataType: 'jsonp', 
      success:function(json){
          // do stuff with json 

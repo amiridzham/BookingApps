@@ -55,7 +55,7 @@ body {
     width:225px;                   /* text area width */
     text-align:center;
     padding:160px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    margin:-280px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
                                    /* offset horizontal: half of text area width */
 }
 
@@ -70,9 +70,10 @@ body {
 }
 
 h2 {
-    font-size:24px;
+    font-size:18px;
     font-weight:normal;
-    margin:0px;
+    margin-bottom:5px;
+    margin-top:10px;
     overflow:visible;
     padding:0px;
     text-align:center;
@@ -83,13 +84,24 @@ h2 {
 margin-top: 10px;
 }
 
-#ddFromList select,#ddToList select
+#ddFromList select,#ddToList select,#ddTripList select
 {
 font-size: 18px;
     display: block;
     
     margin: auto;
     width: 90%;
+    border:3px solid #f9f9f9;
+    padding: 10px;
+
+}
+#pax
+{
+font-size: 18px;
+    display: block;
+    
+    margin: auto;
+
     border:3px solid #f9f9f9;
     padding: 10px;
 
