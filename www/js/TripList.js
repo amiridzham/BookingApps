@@ -19,7 +19,7 @@ $(document).ready(function () {
                                 $('#ddTripList select').append($('<option>', {
                                     value: this['TripID'],
                                     //text: this['TripName']
-                                    text: "<<" + this['TripName'] + ">> Time: " + this['DepartTime'] + "  Seat: " + this['AvailableSeat'] + "  Price: " + this['Price']
+                                    text: "[" + this['TripName'] + "] Time: " + this['DepartTime'] + "  Seat: " + this['AvailableSeat'] + "  Price: " + this['Price']
                                     
             }));
 
@@ -32,14 +32,16 @@ error: function () {
 
 $(".nextBtn").click(function () {
 
-    var dateSelect = $('div#datepicker').datepicker('getDate');
-    var toSelect = $('#ddToList select :selected').val();
-    var fromSelect = fromCode;
+    var tripSelect = $('#ddTripList select :selected').val();
+    var paxSelect = $('#ddPax select :selected').text();
+    var txtName = $('#strName').val();
+    var txtPhone = $('#strPhone').val();
+    var txtEmail = $('#strEmail').val();
 
-    console.log(fromSelect + "-" + toSelect + "-" + dateSelect);
+    console.log(tripSelect + "-Pax:" + paxSelect + "-Name:" + txtName + "-Phone:" + txtPhone + "-Email:" + txtEmail);
 
 
-    location.href = 'TripList.html?fromcode=' + fromSelect + "&tocode=" + toSelect + "&departdate=" + dateSelect;
+    //location.href = 'TripList.html?fromcode=' + fromSelect + "&tocode=" + toSelect + "&departdate=" + dateSelect;
 
 
 });
