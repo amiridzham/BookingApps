@@ -15,47 +15,58 @@ $(document).ready(function () {
 
             // do stuff with json 
             $.each(json, function () {
-                
-                                $('#ddTripList select').append($('<option>', {
-                                    value: this['TripID'],
-                                    //text: this['TripName']
-                                    text: "[" + this['TripName'] + "] Time: " + this['DepartTime'] + "  Seat: " + this['AvailableSeat'] + "  Price: " + this['Price']
-                                    
-            }));
+
+                $('#ddTripList select').append($('<option>', {
+                    value: this['TripID'],
+                    //text: this['TripName']
+                    text: "[" + this['TripName'] + "] Time: " + this['DepartTime'] + "  Seat: " + this['AvailableSeat'] + "  Price: " + this['Price']
+
+                }));
+
+            });
+        },
+        error: function () {
+            alert("Error");
+        },
+    });
+
+    $(".nextBtn").click(function () {
+
+        var tripSelect = $('#ddTripList select :selected').val();
+        var paxSelect = $('#ddPax select :selected').text();
+        var txtName = $('#strName').val();
+        var txtPhone = $('#strPhone').val();
+        var txtEmail = $('#strEmail').val();
+
+        console.log(tripSelect + "-Pax:" + paxSelect + "-Name:" + txtName + "-Phone:" + txtPhone + "-Email:" + txtEmail);
+
+
+        var obj = {
+            pax: paxSelect,
+            name: txtName,
+            phone: txtPhone,
+            email: txtEmail,
+            tripid: tripSelect
+        };
+        
+        var url = 'http://202.75.56.57/~amirid/BusAPI/BookingTrip.php?' + $.param(obj);
+
+        location.href = url;
+
+
 
     });
-},
-error: function () {
-    alert("Error");
-},
-});
 
-$(".nextBtn").click(function () {
+    $("#datepicker").datepicker({
+        dateFormat: 'yyyy-mm-dd'
+    });
 
-    var tripSelect = $('#ddTripList select :selected').val();
-    var paxSelect = $('#ddPax select :selected').text();
-    var txtName = $('#strName').val();
-    var txtPhone = $('#strPhone').val();
-    var txtEmail = $('#strEmail').val();
-
-    console.log(tripSelect + "-Pax:" + paxSelect + "-Name:" + txtName + "-Phone:" + txtPhone + "-Email:" + txtEmail);
-
-
-    //location.href = 'TripList.html?fromcode=' + fromSelect + "&tocode=" + toSelect + "&departdate=" + dateSelect;
-
-
-});
-
-$("#datepicker").datepicker({
-    dateFormat: 'yyyy-mm-dd'
-});
-
-function getParameterByName(name) {
-name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
-var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-    results = regex.exec(location.search);
-return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
-}
+    function getParameterByName(name) {
+        name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+        var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+        return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
 
 
 });

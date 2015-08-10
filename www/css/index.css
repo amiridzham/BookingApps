@@ -84,7 +84,7 @@ h2 {
 margin-top: 10px;
 }
 
-#ddFromList select,#ddToList select,#ddTripList select
+#ddFromList select,#ddToList select,#ddTripList select,#txtBookingTrip
 {
 font-size: 18px;
     display: block;
